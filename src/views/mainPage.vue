@@ -1,6 +1,6 @@
 <template>
   <div style="height: 100%">
-    <div class="container" v-if="!showCalculator">
+    <div class="container" v-if="showCalculator">
       <button class="btn btn-navigation" type="button" @click="changePage()">Calculation History</button>
       <div class="simple-card card-container" >
         <div class="row">
@@ -19,7 +19,7 @@
           <div :class="`col-${btn.lengthButton}`" v-for="(btn, i) in inputButton" :key="i" style="">
             <button 
               type="button"
-              :class="`btn btn-${(btn.type === 'NUMBER' ? 'number' : (btn.title === '=' ? 'equal' : 'operator'))}`"
+              :class="`btn btn-${(btn.type === 'NUMBER' ? 'number' : (btn.title === '=' ? 'equal' : (btn.title === 'CLEAR' ? 'clear' : 'operator')))}`"
               @click="runInput(btn, false)">{{btn.title}}</button>
           </div>
         </div>
@@ -419,13 +419,13 @@ export default {
     background-color: #CDB4DB;
     border-radius: 24px;
     margin-bottom: 24px;
-    width: 40%;
+    width: 32%;
     color: white;
   }
   .simple-card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     transition: 0.3s;
-    width: 40%;
+    width: 30%;
     border-radius:  12px;
     background-color: white;
   }
@@ -433,7 +433,7 @@ export default {
     .simple-card {
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
       transition: 0.3s;
-      width: 60%;
+      width: 50%;
       border-radius:  12px;
       background-color: white;
     }
@@ -441,7 +441,7 @@ export default {
       background-color: #CDB4DB;
       border-radius: 24px;
       margin-bottom: 24px;
-      width: 60%;
+      width: 54%;
       color: white;
     }
   }
@@ -457,7 +457,7 @@ export default {
       background-color: #CDB4DB;
       border-radius: 24px;
       margin-bottom: 24px;
-      width: 80%;
+      width: 86%;
       color: white;
     }
   }
@@ -472,12 +472,15 @@ export default {
   }
   .col-12 {
     width: 100%;
+    text-align: center;
   }
   .col-9 {
     width: 75%;
+    text-align: center;
   }
   .col-3 {
     width: 25%;
+    text-align: center;
   }
   .full-user-input {
     text-align: right;
@@ -501,20 +504,30 @@ export default {
   }
   .btn-number {
     background-color: #FAEDCD;
-    border-radius: 24px;
-    width: 98%;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
     color: black;
   }
   .btn-operator {
     background-color: #A2D2FF;
-    border-radius: 24px;
-    width: 98%;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: black;
+  }
+  .btn-clear {
+    background-color: #A2D2FF;
+    border-radius: 48px;
+    width: 94%;
+    height: 48px;
     color: black;
   }
   .btn-equal {
     background-color: #A2D2FF;
-    border-radius: 24px;
-    width: 100%;
+    border-radius: 48px;
+    width: 94%;
+    height: 48px;
     color: black;
   }
   .btn-item-history {
